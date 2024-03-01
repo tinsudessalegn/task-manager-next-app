@@ -25,13 +25,13 @@ export default function Home() {
   const {data, error, isLoading} = useGetAllTodoQuery();
   return (
     <main>
-      <div className="grid grid-cols-3 gap-8">
+      <>
         {error? (
           <ErrorPage/>
         ): isLoading ? (
           <Loading/>
         ): data ? (
-          <>
+          <div className="grid grid-cols-3 gap-8">
           {data?.map(todo => {
             return <Card key={todo.id} className="flex flex-col justify-between">
             <CardHeader className="flex-row gap-4 item-center">
@@ -53,9 +53,9 @@ export default function Home() {
             </CardFooter>
           </Card>
           })}
-          </>
+          </div>
         ): null}
-      </div>
+      </>
     </main>
   );
 }
